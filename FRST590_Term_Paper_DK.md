@@ -20,7 +20,7 @@ output:
     - '--bibliography=FRST590.bib --csl=apa.csl --filter=pandoc-citeproc'
 ---
 
-# Inference and Attribution of Land Use and Land Cover Change in Watershed Hydrology: Cpmmentary on *Gupta et al. [2015]*
+# Inference and Attribution in Watershed Hydrology: A Discussion of *Gupta et al. [2015]*
 
 ## FRST 590: Statistical Methods in Hydrology
 
@@ -29,40 +29,32 @@ output:
 
 ### 1.0 Motivation
 
-A commentary on the current state of research in the effect of changing land use and land cover (LULC) on streamflow and floods at the catchment scale is presented in *Rogger et al. [2017]*.  In the process of delineating gaps in the existing research, the authors describe the need for new approaches to obtain more general statements on impacts, citing the regularity with which studies obtain contradictory results for the same "kind of change", or intervention.  *Rogger et al. [2017]* highlight two such studies:
+A commentary on the current state of research in the effect of changing land use and land cover (LULC) on streamflow and floods at the catchment scale is presented in *Rogger et al. [2017]*.  In the process of delineating gaps in the existing research, the authors describe the need for new approaches to obtain more general statements on impacts, citing the regularity with which studies obtain contradictory results for the same *kind of change*, or intervention.  *Rogger et al. [2017]* highlights two such studies:
 
 >*"Some recent publications such as the paper of Gupta et al. [2015] on the relative impacts of climate and land use changes on streamflow or that by Alila et al. [2009] about the effects of forest practices on floods have triggered scientific debates with the results being criticized by many scientists."* [@Rogger_2017]
 
-To gain more quantitative insights into the impacts of LULC on hydrological trends, perhaps new quantitative approaches are needed, as *Rogger et al. [2017]* argue.  A better understanding of the appropriate use of existing approaches may be equally valuable.  *Cox [2006]* argues that the translation of a subject-matter problem into a formal statistical question is often the most critical part of the analysis.  The aim of this paper is to determine whether the conclusions arrived at in *Gupta et al. [2015]* are justified by the model, or approach.  First, the subject-matter problem is defined in terms of the fundamental classification of statistical inference.  A discussion follows of the historical development of the type of model to determine its capacity for statistical inference.  Finally, the conclusions of *Gupta et al. [2015]* are compared to the capacity of the model.
+To gain more quantitative insights into the impacts of LULC on hydrological trends, perhaps new quantitative approaches are needed, as *Rogger et al. [2017]* argues.  A clearer understanding of the distinguishing characteristics and appropriate use of existing approaches may be equally valuable.  *Cox [2006]* argues the translation of a subject-matter problem into a formal statistical question is often the most critical part of the analysis.   The aim of this paper is to determine whether the conclusions arrived at in *Gupta et al. [2015]* are justified by the approach.  First, a general outline of statistical inference is presented to provide context for the subject-matter translation problem.  A discussion of the model employed by *Gupta et al. [2015]* then follows to determine its capacity for inference.  Finally the conclusions of *Gupta et al. [2015]* are compared to the model's capacity for inference.
 
 ### 2.0 Background
 
-A part of the difficulty in reviewing the hydrology literature, in particular detection and attribution studies, is the prevalence of value statements invoking blame, guilt, and fear, none of which contribute to the scientific argument. [@Lloyd_2018]  The lack of understanding so often decried in the literature may be due in part to connections or similiarities between the paradigms themselves.  Another challenge in reviewing the literature is the variety of ways the same methods and models are described and employed.  *Bracken [2013]* suggests that while there is a current trend favouring process-based hydrological analysis over purely empirical approaches, there remains a lack of consensus in the definition and measurement of hydrological connectivity.  *Viglione [2016]* notes that in the field of hydrological research, there are numerous and varied approaches to the measurement and prediction of runoff, as well as in the attribution of physical causes to trends in observed data.  The former invokes the Bayesian paradigm as *"hydrological connectivity"* suggests the incorporation of prior knowledge into a model, while the latter invokes causality with *"the attribution of physical causes"*.  In their criticism of the discipline, *Rogger et al. [2017]* also invokes the language of causality when expressing *"the impact ... on*:
+#### 2.1 Statistical Inference: Frequentist and Bayesian
 
->*"Studies that examine the impact of land use changes on streamflow and floods often obtain contradictory results for the same kind of change.  Although results from individual studies are legitimate, it is difficult to obtain general statements on the impacts since each study takes a rather narrow and study-specific perspective."* [@Rogger_2017]
+Some of the difficulty in reviewing the literature is due to the prevalence of value statements invoking blame, guilt, and fear, none of which contribute to the understanding of science. [@Lloyd_2018]  Certainly no discipline or body of literature is perfect, however some of the lack of understanding of statistics often decried in the literature may instead be an indication of the similarities between the established paradigms of statistical inference.  The prominent statistician D.R. Cox broadly summarized inferential statistics by the following paradigms, by the briefest of definitions [@Cox_inference_2006]:
 
-Stepping back to a more general view of the philosophy of statistics, *Lindley [2000]* posits that statistics is fundamentally a study of uncertainty, statistical inference can be measured by probability alone, entirely avoids the language of causality and attribution in the discourse. *Cox [2006]* broadly categorizes inferential statistics into *Frequentist* (deriving inference from data alone) and *Bayesian* (incorporation of prior information) paradigms, both of which have been in use for a century or more.
+* **Frequentist**: inference of system behaviour is measured from data alone, assuming fixed parameters, and
+* **Bayesian**: inference of system behaviour is measured from data, but prior knowledge is incorporated by assuming probabilistic parameters.
 
+*Lindley [2000]* states the concern of statistical analysis is evaluating uncertainty, and the fundamental problem of statistical inference is in using past data to predict future data.  Significance level and confidence, which are descriptions of parameters and not data, do not obey the probability calculus. As such, statistical inference can be measured only by probability, but both Frequentist and Bayesian paradigms measure inference probabilistically. [@Lindley_2000_philosophy_of_stats]
 
-Other paradigms include likelihood (the probability of obtaining some observed data) and information (model comparison by evaluating information content or uncertainty of a signal).  It is a
+While the treatment of the statistical discipline in *Lindley [2000]* entirely avoids the language of causality and attribution, causal inference is a more recently established paradigm (despite independent origins in the 1920s from both Barbara Burks and Sewall Wright) putting causality central in the approach to statistical inference. [@Pearl_2009]  The capacity to evaluate nonexistent (what-if) scenarios, or counterfactuals, is the more advanced level of inference that the field of artificial intelligence strives for, and mere association (i.e. linear regression, machine learning) is the most primitive level. [@Pearl_2018_why]  Statistical inference can thus reasonably include both associative and causal sub-categories.  *Information* and *Likelihood* are additional established paradigms of statistical inference that are beyond the scope of this discussion.
 
-Hydrological analysis is inherently inferential.  To understand runoff at the watershed level, a model of some form must be employed.  One of the central tasks in the study of watershed hydrology is the determination of an appropriate model for the characterization of timing and quantity of runoff at a spatiotemporal scale of interest.  Input variables to hydrological models are discrete observations in time and space, and therefore represent samples of populations of components and mechanisms of the hydrologic cycle.
+The variety of ways of expressing like methods is a natural outcome of the application of statistics across the breadth of academic disciplines with little reason or opportunity to share ideas.  Proof of the apparent interchangeability of methods can be seen in a random sample of titles by giving an academic journal database the key words "Frequentist" and "Bayesian".  Similarly, part of the challenge in reviewing the hydrological literature lies in the nuanced description and integrated application of statistical methods.  While there is a current trend favouring process-based hydrological analysis over purely empirical approaches, there remains a lack of consensus in the definition and measurement of hydrological connectivity. [@Bracken_2013]  In the field of hydrological research, there are numerous and varied approaches to the measurement and prediction of runoff, as well as to the attribution of physical causes to trends in observed data. [@Viglione_2016]  *Bracken [2013]* invokes the Bayesian paradigm, with *"hydrological connectivity"* suggesting the incorporation of prior knowledge into a model, and *Viglione [2016]* invokes causality with *"the attribution of physical causes"*.  *Rogger et al. [2017]* also invokes the language of causality in their criticism of the discipline:
 
-The general inferential paradigms are not mutually exclusive, rather there are a variety of valid approaches to the characterization of the hydrologic cycle, and the validity of approach is dependent upon on the question being asked of the data.
+>*"Studies that examine the impact of land use changes on streamflow and floods often obtain contradictory results for the same kind of change."* [@Rogger_2017]
 
+Analysis of hydrometric data is undertaken in order to base decisions upon expectations of future behaviour of some parameter.  As such, hydrological analysis is inherently inferential, rather than descriptive.  To gain any level of practical understanding of runoff at the watershed level, a model of some form must be employed.  Input variables to hydrological models are discrete observations in time and space, representing samples of components and mechanisms of the hydrologic cycle.  One of the central tasks in the study of watershed hydrology is the determination of an appropriate model for the characterization of timing and quantity of runoff at a spatio-temporal scale of interest.  It is the model selection that determines the paradigm of inference of the study.  The established inferential paradigms are not mutually exclusive, rather there are a variety of valid approaches to characterizations of the hydrologic cycle, and the validity of approach is dependent upon on the question being asked of the data.
 
--summary of types of inference.
--relationship to causality
--causal inference vs. inference of association
-
-
-
--RA Fisher and causality, or objectivity of models.  Bayes and
-
--interested in inferential statistics
-
-From an epistemiological standpoint, if studies investigating attribution of the same intervention arrive at contradictory results, one or both must be false.  Alternatively, if the methodologies from individual studies are in fact both valid, they must be asking different questions.
-
+#### 2.2 Model Selection: Deterministic, Stochastic, and In-between
 
 Hydrological processes occur on many different scales, and are both deterministic and stochastic in nature.  *Sivakumar [2017]* uses the two terms as extremes in describing the complexity of systems, with a third term to describe the space between the two:
 
@@ -70,8 +62,17 @@ Hydrological processes occur on many different scales, and are both deterministi
 * **deterministic**: order and dependence exist at some spatiotemporal scales, such as annual river flow and daily temperature, and
 * **chaotic**: systems governed by three or more degrees of freedom (independent variables requried to describe the state of a system) can be deterministic in the short term, but irreproducible unpredictable in the long term due to sensitivity to initial conditions.
 
-Large scale atmospheric circulation transports water (mass) and energy (heat) in dynamic systems increasing in complexity with spatial scale.  The degrees of freedom (independent variables) of large scale atmospheric circulation models employ in the order of 20-40 independent variables to describe the state of a system at a point in time. [@Fraedrich_DOF_1995]  Such large systems are one extreme of complexity, and are inherently random in nature.  In other words   The nonlinear interactions of the components and mechanisms in the hydrologic cycle represent the stochastic, or random, nature of the hydrologic system.    But some level of determinism does exist in the hydrologic cycle, as , and the sensitivity to initial conditions, the stochastic nature of the hydrological cycle.  Given sufficient degrees of freedom in a dynamic system, a deterministic system can produce random-looking behaviour.  In the short term, there is determinism and order in runoff, however the nonlinear interdependence between components and mechanisms in the hydrologic cycle represent .
+Large scale atmospheric circulation transports water (mass) and energy (heat) in dynamic systems increasing in complexity with spatial scale.  The degrees of freedom (independent variables) of large scale atmospheric circulation models employ in the order of 20-40 independent variables to describe the state of a system at a point in time. [@Fraedrich_DOF_1995]  The nonlinear interactions of the components and mechanisms in the hydrologic cycle represent the stochastic, or random, nature of the hydrologic system, requiring stochastic models.  But some level of determinism does exist in the hydrologic cycle.  In the short term, there is determinism and order in a low complexity system such as synoptic rainfall and resultant runoff in a small, highly developed catchment. A watershed made slighly more complex by increased size, or addition of any number of forms of storage may gain sufficient degrees of freedom, and as a resultbe unpredictable and irreproducible in the long-term due to sensitivity to initial conditions.
 
+#### Something I'm not sure fits here
+
+A final point about the criticism levelled at the hydrology discipline from *Rogger et al. [2017]*:
+
+>*Although results from individual studies are legitimate, it is difficult to obtain general statements on the impacts since each study takes a rather narrow and study-specific perspective.* [@Rogger_2017]
+
+From an epistemiological standpoint, if studies investigating attribution of the same intervention arrive at contradictory results, one or both must be false.  Alternatively, if the methodologies from individual studies are in fact both valid, they must be asking different questions.
+
+### 3.0 The Statistical Model of *Gupta et al. [2015]
 
 >*"Rather than idealized angels of reason, scientific models are powerful clay robots without intent of their own, bumbling along according to the myopic instructions they embody."* [@McElreath_2018]
 
