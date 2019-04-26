@@ -20,24 +20,24 @@ output:
     - '--bibliography=FRST590.bib --csl=apa.csl --filter=pandoc-citeproc'
 ---
 
-# Inference and Attribution in Watershed Hydrology
+# Inference and Attribution in Watershed Hydrology: Commentary on *Climate and agricultural land use change impacts on streamflow in the upper midwestern United States* [@Gupta_2015]
 
 ## FRST 590: Statistical Methods in Hydrology
 
 **Submitted**: 29 March 2019
 **Prepared by**: Dan Kovacek (35402767)
 
-### 1.0 Motivation
+## 1.0 Motivation
 
 A commentary on the current state of research into the effect of changing land use and land cover (LULC) on streamflow and floods at the catchment scale is presented in *Rogger et al. [2017]*.  In the process of delineating gaps in the existing research, the authors describe the need for new approaches to obtain more general statements on impacts, citing the regularity with which studies obtain contradictory results for the same *kind of change*, or intervention.  *Rogger et al. [2017]* highlights two such studies:
 
 >*"Some recent publications such as the paper of Gupta et al. [2015] on the relative impacts of climate and land use changes on streamflow or that by Alila et al. [2009] about the effects of forest practices on floods have triggered scientific debates with the results being criticized by many scientists."*
 
-To gain more quantitative insights into the impacts of LULC on hydrological trends, perhaps new quantitative approaches are needed, as *Rogger et al. [2017]* argues.  A clearer understanding of the distinguishing characteristics and appropriate use of existing approaches may be equally valuable.  *Cox [2006]* argues that the translation of a subject-matter problem into a formal statistical question is often the most critical part of the analysis.   The aim of this paper is to determine whether the conclusions arrived at in *Gupta et al. [2015]* are justified by the approach.  First, a general outline of statistical inference is presented to provide context for the subject-matter translation problem.  A summary and discussion of the *Gupta et al. [2015]* study then follows to determine its capacity for inference, and finally the conclusions of the study are compared to the model's capacity for inference.
+To gain more quantitative insights into the impacts of LULC on hydrological trends, perhaps new quantitative approaches are needed, as *Rogger et al. [2017]* argues.  A clearer understanding of the distinguishing characteristics and appropriate use of existing approaches may be equally valuable.  *Cox [2006]* argues that the translation of a subject-matter problem into a formal statistical question is often the most critical part of the analysis.   The aim of this paper is to determine whether the conclusions arrived at in *Gupta et al. [2015]* are justified by the approach.  First, a general outline of statistical inference is presented to provide context for the subject-matter development and translation problem.  A summary and discussion of the *Gupta et al. [2015]* study then follows to determine its capacity for inference, and finally the conclusions of the study are compared to the model's capacity for inference.
 
-### 2.0 Background {#section2}
+## 2.0 Background {#section2}
 
-#### 2.1 Paradigms of Statistical Inference
+### 2.1 Paradigms of Statistical Inference
 
 Some of the difficulty in reviewing the statistical literature is due to the prevalence of value statements invoking blame, guilt, and fear, none of which contribute to the understanding of science. [@Lloyd_2018]  Certainly no discipline or body of literature is perfect, however some of the lack of understanding of statistics often decried in the literature may instead be an indication of the similarities between the established paradigms of statistical inference.  The prominent statistician D.R. Cox broadly defined inferential statistics by the following paradigms, presented here in the briefest of summaries:
 
@@ -54,9 +54,11 @@ Similarly, part of the challenge in reviewing the hydrological literature lies i
 
 >*"Studies that examine the impact of land use changes on streamflow and floods often obtain contradictory results for the same kind of change."*
 
-Analysis of hydrometric data is undertaken in order to base decisions upon expectations of future behaviour of some unknown parameter of interest.  To gain any level of practical understanding of runoff at the watershed level, a model of some form must be employed.  Input variables to hydrological models are discrete observations in time and space, representing samples of components and mechanisms of the hydrologic cycle.  As such, hydrological analysis is inherently inferential, rather than merely descriptive.  One of the central tasks in the study of watershed hydrology is the determination of an appropriate model for the characterization of timing and quantity of runoff at a spatio-temporal scale of interest.  It is the model selection that determines the paradigm of statistical inference of the study.  The established inferential paradigms are not mutually exclusive, rather there are a variety of valid approaches to characterizations of the hydrologic cycle, and the validity of approach is dependent upon on the question being asked of the data.
+Analysis of hydrometric data is undertaken in order to base decisions upon expectations of future behaviour of some unknown parameter of interest.  To gain any level of practical understanding of runoff at the watershed level, a model of some form must be employed.  Input variables to hydrological models are discrete observations in time and space, representing samples of components and mechanisms of the hydrologic cycle.  As such, hydrological analysis is inherently inferential, rather than merely descriptive.
 
-#### 2.2 Modelling Processes: Deterministic, Stochastic, and In-between
+One of the central tasks in the study of watershed hydrology is the determination of an appropriate model for the characterization of timing and quantity of runoff at a spatio-temporal scale of interest.  It is the model development that determines the paradigm of statistical inference of the study.  The established inferential paradigms are not mutually exclusive, rather there are a variety of valid approaches to characterizations of the hydrologic cycle, and the validity of the approach is dependent upon on the question being asked of the data.
+
+### 2.2 Modelling Processes: Deterministic, Stochastic, and In-between {#section22}
 
 >*"Rather than idealized angels of reason, scientific models are powerful clay robots without intent of their own, bumbling along according to the myopic instructions they embody."* [@McElreath_2018]
 
@@ -70,15 +72,15 @@ The discussion of *"hydrological connectivity"* in *Bracken [2013]* suggests the
 
 Hydrological processes occur on many different scales, both deterministic and stochastic in nature.  *Sivakumar [2017]* places the two terms at extremes in describing the complexity of systems, and adds a third term to describe the space between these extremes:
 
-* **deterministic**: order and dependence exist at certain spatiotemporal scales, such as annual river flow and daily temperature,
+* **deterministic**: order and dependence exist at certain spatiotemporal scales, such as daily discharge and daily temperature,
 * **stochastic**: nonlinear interactions dominate the hydrologic cycle yielding random and irreproducible states of the real system, and
-* **chaotic**: systems governed by three or more independent variables required to describe the state of a system (degrees of freedom) [@Gleick_chaos] can be deterministic in the short term, but irreproducible unpredictable in the long term due to sensitivity to initial conditions.
+* **chaotic**: systems governed by three or more independent variables required to describe the state of a system (degrees of freedom) [@Gleick_chaos] can be deterministic in the short term, but irreproducible and unpredictable in the long term due to sensitivity to initial conditions.
 
-In the hydrologic cycle, interactions between components and mechanisms occur in many different ways, directly or indirectly, often in feedback forms, and in varying degrees of nonlinearity. Therefore the processes of the hydrologic cycle are stochastic in nature.  [@Sivakumar_2017]  But some level of determinism does exist in the hydrologic cycle, and deterministic, or process-based models are combined with stochastic models in practice.  [@Kouts_2016_stochastic]  While in the short term, there is determinism and order in a low complexity system, such as the rainfall-runoff response of a a small, highly developed catchment, the sensitivity of even a simple rainfall-runoff model of very few degrees of freedom can be highly sensitive to initial conditions and are unpredictable in the long-term. [@Sivakumar_2017]
+In the hydrologic cycle, interactions between components and mechanisms occur in many different ways, directly or indirectly, often in feedback forms, and in varying degrees of nonlinearity. There is merit to deterministic approaches to evaluating the cyclical nature of certain processes.  Stochastic approaches are suitable where complex interactions govern a system or process of interest where the ability to observe the data is limited. [@Sivakumar_2017]  Some level of determinism does exist in the hydrologic cycle, and deterministic, or process-based models are combined with stochastic models in practice and can be complementary ([@Kouts_2016_stochastic], [@Sivakumar_2017])  While in the short term, there is determinism and order in a low complexity system, such as the rainfall-runoff response of a a small, highly developed catchment, the sensitivity of even a simple rainfall-runoff model of very few degrees of freedom can be highly sensitive to initial conditions and are unpredictable in the long-term. [@Sivakumar_2017]  Daily discharge in a river has been shown to be a deterministic-chaotic process. [@kedra_det_chaos_2013]
 
 A hydrological model can either be designed to yield some level of certainty about an unknown parameter (or treatment effect) given specific requirements for input, or conversely, a quantitative statement about the quality of estimation of the unknown parameter (or treatment effect) can be determined given fixed input.  As with the choice of statistical paradigm, the choice of model is highly dependend upon the question being asked of the data.  How the quality of predictions are communicated is addressed in the subsequent section.
 
-#### 2.3 Communicating Effects: P-Value, Significance, Confidence, and Equivalence
+### 2.3 Communicating Effects: P-Value, Significance, Confidence, and Equivalence
 
 Interpretations of model outcomes are communicated using specific metrics to make the information useful for a practical application, regardless of the model type.  The way the effect of a treatment is measured and communicated has been the source of ongoing debate for generations ([@Merz_2012_epiuncert], [@Alila_2009], [@Lloyd_2018], [@Pearl_2018_why], [@Gupta_2015])  Since real systems tend to be highly complex, it is necessary to have different approaches to evaluate the effect of some parameter of interest or treatment. This discussion is limited to terms relevant to the methodology presented in *Gupta et al. [2015].*
 
@@ -99,45 +101,37 @@ A statement of the quality, or confidence level, of an estimated parameter is on
 
 The differences in the above statements are subtle in print, but have important mathematical consequences, as *Lindley [2000]* details.  The preceding discussion presented a general overview of statistical inference, modelling, and evaluation, and was written to provide specific context for the summary of *Gupta et al. [2015]* that follows.
 
-### 3.0 *Climate and agricultural land use change impacts on streamflow in the upper midwestern United States* [@Gupta_2015]
+## 3.0 *Climate and agricultural land use change impacts on streamflow in the upper midwestern United States* [@Gupta_2015]
 
-#### 3.1 Summary
+### 3.1 Summary
 
-Analysis of measured runoff between 1909 and 2009 in 29 watersheds in Iowa and Minnesota demonstrates an increasing trend of annual runoff, coincident with a positive trend in annual precipitation.  *Gupta et al. [2015]* attempts to quantify the relative contributions of increased precipitation and changing land use and land cover (LULC) to the observed increase in runoff.  A secondary goal of the study is to explain the observation of constant evapotranspiration (ET) over the same period of time, by attempting to disaggregate the increasing ET from changing LULC and the decreasing ET from loss of wetlands.
+Analysis of measured runoff between 1909 and 2009 in 29 watersheds in Iowa and Minnesota demonstrates an increasing trend of annual runoff, coincident with a positive trend in annual precipitation.  *Gupta et al. [2015]* attempts to quantify the relative contributions of increased precipitation and changing land use and land cover (LULC) to the observed increase in runoff.  A secondary goal of the study is to explain the observation of constant evapotranspiration (ET) over the same period of time, by attempting to disaggregate the effects of changing LULC (increasing ET) and loss of wetlands (decreasing ET).
 
 Separating the measured record into two periods consistent with a Before-After-Control-Impact (BACI) analysis framework, *Gupta et al. [2015]* cites the extensive adoption of plastic drain tile in agricultural practices in the mid-1970s as the intervention, consistent with the break point adopted in previous studies. (see references in *Gupta et al. [2015]*)
 
-*Gupta et al. [2015]* tests for a change in the relationship between streamflow versus precipitation by using a series of linear regression models of varying complexity, presented in more detail in the subsequent section.  The study found results statistically significant at the 5% level (95% confidence interval, $P < 0.05$) for 19 out of 29 watersheds using a multivariate linear regression model of average annual precipitation and runoff.  Using 5-year moving averages of precipitation and runoff, all 29 watersheds exhibit a significant shift in regression coefficients, suggesting increased runoff is attributable to increased precipitation alone.  A single control watershed with limited agriculture and development found no statistical difference in the relationship between precipitation and runoff for the two periods.  Given the results of the statistical tests, the authors conclude that increased streamflow over the study period is mainly due to increased precipitation, and that LULC change produced no effect.
+*Gupta et al. [2015]* tests for a change in the relationship between streamflow versus precipitation by using a series of linear regression models of varying complexity, presented in more detail in the subsequent section.  The study found results statistically significant at the 5% level (95% confidence interval, $P < 0.05$) for 19 out of 29 watersheds using a multivariate linear regression model of average annual precipitation and runoff.  Using 5-year moving averages of precipitation and runoff, all 29 watersheds exhibit a significant shift in regression coefficients, suggesting increased runoff is attributable to increased precipitation alone.  A single control watershed with limited agriculture and development found no statistical difference in the relationship between precipitation and runoff for the two periods.  Given the results of the statistical tests, the authors conclude that increased streamflow over the study period is mainly due to increased precipitation, and that LULC change had no effect.
 
 In terms of the secondary question of the effect of ET on the relationship between precipitation and runoff, *Gupta et al. [2015]* concludes that the lack of effect of LULC change on streamflow is the result of comparable ET over the two periods.
 
-#### 3.2 Discussion of the Study Assumptions and the Subject-Matter Problem
+### 3.2 Discussion of the Study Assumptions and the Subject-Matter Problem
 
-*Gupta et al. [2015]* asks a specific question of the data: how much of the observed increasing trend in runoff in the upper midwestern US is attributatble to improved soil drainage, and how much simply to the observed increasing trend in precipitation?  Restated in the terms introduced in [Section 2](#section2), what is the effect of the treatment (LULC change) on the parameter of interest (mean annual runoff)?  What is an effect size of interest? The methodology, discussed in further detail in the subsequent section, translates this subject-matter question to a statistical problem by creating two groups (pre-change and post-change) and testing for equivalence.
+*Gupta et al. [2015]* asks a specific question of the data: how much of the observed increasing trend in runoff in the upper midwestern US is attributatble to improved soil drainage, and how much is attributable to the observed increasing trend in precipitation?  Restated in the terms introduced in [Section 2](#section2), what is the effect of the treatment (LULC change) on the parameter of interest (mean annual runoff)?  Missing from the formulation of the subject-matter problem is the question of the effect size of interest, and a practical interpretation.
 
-How does the evaluation of statistical significance in *Gupta et al. [2015]* reflect the practical interpretation of the subject-matter problem?  What is the purpose of evaluating the cause of change in *annual* runoff volume specifically?  Is there some quantifiable effect of LULC change on *average annual runoff volume* that would warrant changes in policy or agricultural practice?  If annual runoff is a proxy, or indicator, of changes to characteristics or processes relevant to agriculture, the approach of *Gupta et al. [2015]*  such practical issues.  *Alila et al. [2009]* (and references therein) directly addresses the practical question of whether changes in annual means are a proxy for changes in variability, magnitude, and frequency of extremes.
+To place the approach of *Gupta et al. [2015]* within the general overview of statistical inference paradigms described in [Section 2.2](#section22), it is clear that language of causality is invoked throughout the paper (i.e. "*higher annual streamflows in recent periods are mainly **due to** higher
+precipitation*", "*there was **no effect** of land use changes on the
+streamflow versus precipitation relationship.*"), however there is an explicit signal to the frequentist paradigm:
 
-Changes to seasonal runoff in terms relevant to agricultural productivity include timing and magnitude of drought and flood extremes and thus erosion, freshet (snowpack), and seasonal or monthly runoff distribution relevant to critical periods such as crop uptake.  *Gupta et al. [2015]* goes no further to address such practical questions beyond qualitatively discussing the trends in runoff ratio increasing in May-June, and decreasing in September-October, despite precipitation trends in the opposite proportion. [@shottler_2014_erosion] *Gupta et al. [2014]* uses these observed trends to discuss changes in the annual soil storage distribution, but does not discuss the implications of increased soil moisture for floods, and disregards the practical context of the *Shottler [2014]* study in investigating the issue of erosion.
+>"*As with many statistical analyses in which explanatory variable levels are not under control of the experimenter, relating streamflow to precipitation as was done in this study by itself does not suggest a cause and effect relationship.*"
 
--uses 1975 as a breakpoint, but the starting points are different.  how sensitive are results to inclusion or exclusion of outlier years?
+How does the evaluation of statistical significance in *Gupta et al. [2015]* reflect the practical interpretation of the subject-matter problem?  What is the purpose of evaluating the cause of change in *annual* runoff volume specifically?  The link between increased streamflow and water quality is made at the outset, and addressed no further in the study.  Is there some probability of a quantifiable effect size of LULC change on *average annual runoff volume* that would warrant changes in policy or agricultural practice?  If annual runoff is a proxy, or indicator, of changes to characteristics or processes relevant to agriculture, the approach of *Gupta et al. [2015]* does not address such practical issues.   The development of the subject-matter problem in *Zhang and Libra [2006]* sets a practical context for the research question.  Changing baseflows in rivers across Iowa are changing the characteristics of water pollutant delivery. [@zhang_2006]  *Alila et al. [2009]* (and references therein) directly addresses the practical question of whether changes in annual means are a proxy for changes in variability, magnitude, and frequency of extremes.
 
--lengthy discussion of changes in soil moisture due to increased precipitation in fall, and decrease in may-june.  But snowpack is not mentioned.
+### 3.3 Discussion of the Statistical Methodology
 
+The methodology of *Gupta et al. [2015]* translates the subject-matter question to the statistical problem by creating two groups (pre-change and post-change) and testing for equivalence, although as previously discussed, the practical significance of equivalence is not addressed.  The two groups of the BACI test are represented by independent, non-concurrent time periods.  The first time period (before) varied in start date for most stations, and the second period (after) consistently ended in 2009.  The break point dividing the two time periods was set at 1975, corresponding to widespread adoption of plastic tile drainage in agriculture, consistent with related, independent studies.  The number of samples in the first group thus varies ($29 \leq n_1 \leq 72$), and the number of samples in the second group is ($n_2 = 34$).
 
-![Graphical representation of the basic subject matter problem of precipitation, drainage, and runoff.](images/dag1.png){width=300px}
+First, temporal trends in annual precipitation are demonstrated in two ways, one using the Mann-Kendall nonparametric test, and the other by calculating mean annual precipitation for three periods: 1920-1949, 1950-1979, and 1980-2009.  Both methods indicate an increasing trend in precipitation.
 
-![Graphical representation of the modified subject matter problem incorporating evaporation.](images/dag2.png){width=300px}
-
--Gupta says seasonal runoff ratio changes are not appropriate due to dependence of runoff on antecedent soil moisture in previous season.
--gupta makes the interdependence between precipitation, soil type, soil storage, and antecedent soil mosture, in arguing that previous studies have concluded LULC contribute to increased runoff due to increased runoff ratios from better drainage.  Gupta argues that, among other factors, these studies fail to consider that higher runoff ratios may be due to increased soil moisture from increased precipitation.
-
-[@zhang_2006]
-
-
-#### 3.3 Discussion of the Statistical Methodology
-
-
-Runoff and precipitation data from 1966 to 2009 were used in the BACI study, with the breakpoint between the two periods, corresponding to widespread adoption of plastic tile drainage in agriculture, set at 1975.  The system of models are described by the following equations (1), (2), and (3):
+The system of models used to test the relative effect of precipitation and LULC change are described by the following equations:
 
 $$ln(Q_{all}) = \beta_0 + \beta_1 \cdot P_{all} + \beta_2 \cdot I + \beta_3 \cdot P \cdot I \hspace{2.25cm} (1)$$
 
@@ -145,13 +139,14 @@ $$ln(Q_{all}) = \beta_4 + \beta_5 \cdot P_{all} + \beta_6 \cdot I \hspace{4cm} (
 
 $$ln(Q_{all}) = \beta_7 + \beta_8 \cdot P_{all} \hspace{5.2cm} (3)$$
 
-Statistical tests of the coefficients ($\beta_0, ..., \beta_8$) are used to measure whether the relationship between streamflow and precipitation for the two periods of interest are better represented by
+Statistical tests of the coefficients ($\beta_0, ..., \beta_8$) are used to evaluate whether the relationship between streamflow and precipitation for the two periods while controlling for LULC change.  In each model, *I* has a value of 0 or 1 based upon the period, such that pre and post-change periods are assigned separate coefficients.  ANOVA tests for significant difference in the ...
 
 Using annual precipitation and runoff volumes, *Gupta et al. [2015]* posits that a change in the linear relationship between precipitation and (the natural logarithm of) runoff should be indicative of a change in how the watershed converts precipitation to streamflow. [@Georgiou_2015]
 
-In each model, *I* has a value of 0 or 1 based upon the period, such that pre and post-change periods are assigned separate coefficients.  ANOVA tests for significant difference in the
+-uses 1975 as a breakpoint, but the starting points are different.  how sensitive are results to inclusion or exclusion of outlier years?
 
-Temporal trends in annual precipitation are demonstrated in two ways, one using the Mann-Kendall nonparametric test, and the other by calculating mean annual precipitation for three periods: 1920-1949, 1950-1979, and 1980-2009.
+-Gupta says seasonal runoff ratio changes are not appropriate due to dependence of runoff on antecedent soil moisture in previous season.
+-gupta makes the interdependence between precipitation, soil type, soil storage, and antecedent soil mosture, in arguing that previous studies have concluded LULC contribute to increased runoff due to increased runoff ratios from better drainage.  Gupta argues that, among other factors, these studies fail to consider that higher runoff ratios may be due to increased soil moisture from increased precipitation.
 
 -where does the moisture come from?
 
@@ -163,10 +158,18 @@ $$ET = PPT - Q - \Delta S - D $$
 
 Restating the subject-matter problem using the counterfactual paradigm of *Pearl [2018]*, suppose we have two hypothetically identical basins, and we subject them to identical precipitation over some period of time.  If we improve drainage on one plot, will annual runoff increase?  If infiltration and evaporation are effectively constant over the time period, as *Gupta et al. [2015]* assumes, runoff will increase from conservation of mass.  The graphical representation of this system representation is shown in [Figure 2](#fig2).
 
+![Graphical representation of the basic subject matter problem of precipitation (P), drainage (D), and runoff (R).](images/dag1.png){#fig2 width=250px}
+
+Recognizing the relationship of evaporation as a confounding process between precipitation and drainage (or soil storage), we arrive at the system representation shown in [Figure 3](#fig3).
+
+![Graphical representation of the modified subject matter problem incorporating evaporation (E).](images/dag2.png){#fig3 width=250px}
+
 Pan evaporation is a measure of evaporative demand, and is driven by humidity gradients, temperature, wind speed, and solar insolation. [@Roderick_2007]  Investigating a widely observed global trend in decreasing pan evaporation, *Roderick et al.* [2007] modeles the components of evaporative demand and attributed the decline in measured pan evaporation between 1975 and 2004 to a reduction in wind speed along with regional reduction in insolation.  Note that pan evaporation data were used based on a single location to represent evapotranspiration across all of Minnesota and Iowa.  Average wind speeds are spatially variable across Minnesota and Iowa [@Harding_2012_precip_recycling]
 
 
 The study cites evidence of the spread of agrigultural practices, including the use of drainage ditches and subsurface drain tile, beginning in the early 1900s.  This assumption thus neglects the existing drainage and subsurface drain tile, in use for three quarters of a century prior to the set breakpoint in study periods (1975).  Numerous related studies viewing widespread adoption of plastic drain tile in the mid 1970s as the major cause of increased runoff ([@Schill_Libra_2003], [@Raymond_2008], [@Wang_2011], [@Xu_2013], [@Schottler_2015]).  But without evidence of performance and/or soil moisture measures to defend the null hypothesis (no effect of drainage tile), the intervention being investigated is then limited to the performance of modern plastic drain tile versus the older clay tile.
+
+Changes to seasonal runoff in terms relevant to agricultural productivity include timing and magnitude of extremes at different timescales, erosion, freshet (snowpack), and seasonal or monthly runoff distribution relevant to critical periods such as crop uptake.  *Gupta et al. [2015]* goes no further to address such practical questions beyond qualitatively discussing the trends in runoff ratio increasing in May-June, and decreasing in September-October, despite precipitation trends in the opposite proportion. [@shottler_2014_erosion] *Gupta et al. [2014]* addresses these observed trends in seasonal runoff ratio to defend to discuss changes in the annual soil storage distribution , but does not discuss the implications of increased soil moisture for floods, and disregards the practical context of the *Shottler [2014]* study in investigating the issue of erosion.
 
 Alila:
 -dominant process theory (moderate correlation between April 1st SWE and peak flows)
@@ -185,4 +188,4 @@ Gupta:
 -possibility of delayed or transient effects of intervention (Murtaugh 2002)
 
 
-### 4.0 References
+## 4.0 References
